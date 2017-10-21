@@ -173,3 +173,9 @@ a {
 a:hover {
   color: #009687;
 }
+
+ul li {
+  background: #cce5ff;
+  margin: 5px;
+  padding: 20px;
+}
