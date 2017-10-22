@@ -68,6 +68,12 @@ section.module.parallax-3 {
     text-align: center;
   }
 
+
+ul li {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
 @media all and (min-width: 600px) {
   section.module h2 {
     font-size: 36px;
