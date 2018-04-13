@@ -150,6 +150,13 @@ function readData(layer, dispatch) {
       layerObj.source.data = parsedData;
       layerObj.mergedData = parsedData;
       if (layerObj.aggregate && layerObj.aggregate.filter) {
+        if (layerObj.layers) {
+          const currentState = dispatch(getCurrentState());
+          layerObj.layers.forEach((sublayer) => {
+            const subLayer = currentState.MAP.layers[sublayer];
+            subLayer.filterOptions = generateFilterOptions(subLayer);
+          });
+        }
         layerObj.filterOptions = generateFilterOptions(layerObj);
       }
       renderData(layerObj, dispatch);
@@ -236,11 +243,11 @@ export default function prepareLayer(layer, dispatch, filterOptions = false) {
       renderData(layerObj, dispatch);
     }
   } else if (layerObj.layers) {
+    const currentState = dispatch(getCurrentState());
+
     // TODO: fix for grouped layers
     // if layer has sublayers, add all sublayers
     // self.addLegend(layerSpec);
-
-    const currentState = dispatch(getCurrentState());
 
     layerObj.layers.forEach((sublayer) => {
       const subLayer = currentState.MAP.layers[sublayer];
@@ -257,6 +264,5 @@ export default function prepareLayer(layer, dispatch, filterOptions = false) {
         renderData(subLayer, dispatch);
       }
     });
-    renderData(layerObj, dispatch);
   }
 }
