@@ -52,7 +52,7 @@ export default function (layer, mapConfig, dispatch) {
     layerObj.legendBottom = 40;
   }
 
-  if (layer.property) {
+  if (layer.property && layer.stops !== false) {
     stops = generateStops(layer, timefield, dispatch);
   }
 
@@ -275,6 +275,11 @@ export default function (layer, mapConfig, dispatch) {
     } else {
       styleSpec.source.url = layer.source.url;
       styleSpec['source-layer'] = layer.source.layer;
+    }
+
+    // add filter
+    if (layer.filter) {
+      styleSpec.filter = layer.filter;
     }
   }
 
