@@ -27,6 +27,7 @@ gisida.onaAPI = require('./connectors/ona-api/api').default;
 gisida.onaAuth = require('./connectors/ona-api/auth').default;
 gisida.getData = require('./connectors/ona-api/data').default;
 gisida.aggregateFormData = require('./connectors/ona-api/aggregateFormData').default;
+gisida.buildParsedBasicDetailItem = require('./map/buildDetailView').buildParsedBasicDetailItem;
 gisida.processFormData = require('./connectors/ona-api/aggregateFormData').processFormData;
 gisida.parseData = require('./utils/parseData').default;
 gisida.lngLat = require('./utils/lngLat').default;
